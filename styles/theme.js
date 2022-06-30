@@ -17,12 +17,12 @@ const fonts = {
 };
 
 const fontSizes = {
-  large: 28,
-  medium: 24,
-  small: 20,
-  xsmall: 18,
-  xxsmall: 16,
-  xxxsmall: 12,
+  large: 24,
+  medium: 20,
+  small: 16,
+  xsmall: 14,
+  xxsmall: 12,
+  xxxsmall: 10,
 };
 
 export { colors, fontSizes, fonts };

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Modal } from "react-native";
 import React, { useState } from "react";
 import InputField from "./InputField";
 import LoginButton from "./LoginButton";
@@ -6,12 +6,18 @@ import { colors, fonts, fontSizes } from "../../styles/theme";
 import isEmail from "validator/lib/isEmail";
 import isEmpty from "validator/lib/isEmpty";
 import isLength from "validator/lib/isLength";
+import SignupModal from "../../screens/SignupModal";
 
 export default function LoginForm() {
   const [email, onChangeEmail] = useState("");
   const [password, onChangePassword] = useState("");
+  const [showSignupModal, setShowSignupModal] = useState(true);
 
   const submitForm = () => {};
+
+  const toggleModal = () => {
+    setShowSignupModal(!showSignupModal);
+  };
 
   const TitleContainer = () => {
     return (
@@ -40,10 +46,18 @@ export default function LoginForm() {
     return (
       <View style={{ flexDirection: "row", justifyContent: "center" }}>
         <Text style={styles.subtitle}>Dont have an account?{"  "}</Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={toggleModal}>
           <Text style={styles.link}>Sign up</Text>
         </TouchableOpacity>
       </View>
+    );
+  };
+
+  const ForgotPassword = () => {
+    return (
+      <TouchableOpacity style={{ alignItems: "center", marginTop: 10 }}>
+        <Text style={styles.link}>Forgot password?</Text>
+      </TouchableOpacity>
     );
   };
 
@@ -61,23 +75,32 @@ export default function LoginForm() {
   return (
     <View style={styles.formContainer}>
       <TitleContainer></TitleContainer>
-      <InputField
-        value={email}
-        onChangeText={onChangeEmail}
-        placeholder={"someone@example.com"}
-        validate={validateEmail}
-        customError={"Please enter a valid email"}
-      ></InputField>
-      <InputField
-        value={password}
-        onChangeText={onChangePassword}
-        security={true}
-        placeholder={"Password"}
-        validate={validatePassword}
-        customError={"Password should be at least 6 characters long"}
-      ></InputField>
+      <View>
+        <InputField
+          label={"Email"}
+          value={email}
+          onChangeText={onChangeEmail}
+          placeholder={"someone@example.com"}
+          validate={validateEmail}
+          customError={"Please enter a valid email"}
+        ></InputField>
+        <InputField
+          label={"Password"}
+          value={password}
+          onChangeText={onChangePassword}
+          security={true}
+          placeholder={"password"}
+          validate={validatePassword}
+          customError={"Password should be at least 6 characters long"}
+        ></InputField>
+      </View>
       <LoginButtonContainer></LoginButtonContainer>
       <SignUpMessageContainer></SignUpMessageContainer>
+      <ForgotPassword></ForgotPassword>
+      <SignupModal
+        toggleModal={toggleModal}
+        show={showSignupModal}
+      ></SignupModal>
     </View>
   );
 }
@@ -95,12 +118,13 @@ const styles = StyleSheet.create({
     fontFamily: fonts.bold,
   },
   subtitle: {
-    fontSize: fontSizes.xxsmall,
+    fontSize: fontSizes.xsmall,
     fontFamily: fonts.light,
     marginBottom: 5,
   },
   link: {
     textDecorationLine: "underline",
+    fontSize: fontSizes.xsmall,
     fontFamily: fonts.semibold,
   },
 });

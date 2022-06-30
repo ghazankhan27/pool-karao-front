@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { colors, fonts, fontSizes } from "../../styles/theme";
 
 export default function InputField({
+  label,
   value,
   onChangeText,
   placeholder,
@@ -34,7 +35,10 @@ export default function InputField({
   };
 
   return (
-    <View>
+    <View style={styles.container}>
+      <View style={{ paddingLeft: 6 }}>
+        <Text style={styles.label}>{label}</Text>
+      </View>
       <TextInput
         onFocus={onFocusChange}
         onBlur={onBlurChange}
@@ -53,19 +57,25 @@ export default function InputField({
 }
 
 const styles = StyleSheet.create({
+  container: {
+    marginVertical: 10,
+  },
   input: {
     borderWidth: 1,
     borderRadius: 50,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    marginVertical: 8,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
     fontSize: fontSizes.small,
     borderWidth: 2,
     fontFamily: fonts.primary,
+    marginTop: 4,
   },
   error: {
     fontFamily: fonts.bold,
     fontSize: fontSizes.xxxsmall,
     color: colors.error,
+  },
+  label: {
+    fontFamily: fonts.semibold,
   },
 });

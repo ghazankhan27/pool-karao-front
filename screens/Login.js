@@ -1,8 +1,9 @@
 import {
   StyleSheet,
   StatusBar,
-  KeyboardAvoidingView,
-  ScrollView,
+  View,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from "react-native";
 import React from "react";
 import Logo from "../components/login/Logo";
@@ -10,21 +11,24 @@ import LoginForm from "../components/login/LoginForm";
 
 export default function Login() {
   return (
-    <ScrollView style={styles.container}>
-      <KeyboardAvoidingView
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
-      >
+    <TouchableWithoutFeedback
+      onPress={() => {
+        Keyboard.dismiss();
+      }}
+    >
+      <View style={styles.container}>
         <Logo></Logo>
         <LoginForm></LoginForm>
-      </KeyboardAvoidingView>
-    </ScrollView>
+      </View>
+    </TouchableWithoutFeedback>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 20,
-    paddingTop: StatusBar.currentHeight,
+    paddingHorizontal: 14,
+    justifyContent: "space-between",
+    paddingVertical: StatusBar.currentHeight,
   },
 });

@@ -15,12 +15,11 @@ export default function Logo() {
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
-    marginVertical: 30,
-    paddingVertical: 30,
+    marginVertical: 40,
   },
   image: {
     width: "100%",
-    height: 200,
+    height: 150,
     resizeMode: "contain",
   },
 });

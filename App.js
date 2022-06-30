@@ -15,7 +15,11 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <StatusBar style="auto"></StatusBar>
+      <StatusBar
+        translucent={false}
+        style="auto"
+        backgroundColor={colors.secondary}
+      ></StatusBar>
       {fontsLoaded ? <Login></Login> : <Text>Loading</Text>}
     </View>
   );
