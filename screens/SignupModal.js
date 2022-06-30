@@ -3,12 +3,10 @@ import {
   StyleSheet,
   Text,
   View,
-  Button,
   StatusBar,
   TouchableWithoutFeedback,
   Keyboard,
   TouchableOpacity,
-  ScrollView,
 } from "react-native";
 import React, { useState } from "react";
 import InputField from "../components/login/InputField";
