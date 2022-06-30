@@ -8,6 +8,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 import React, { useState } from "react";
 import InputField from "../components/login/InputField";
@@ -56,6 +57,7 @@ export default function SignupModal({ show, toggleModal }) {
           <CloseIcon></CloseIcon>
           <TitleContainer></TitleContainer>
           <View style={styles.formContainer}>
+            <View style={{ height: 20 }}></View>
             <InputField
               label={"Name*"}
               value={name}
@@ -120,7 +122,6 @@ const styles = StyleSheet.create({
   },
   formContainer: {
     backgroundColor: colors.background,
-    paddingVertical: 50,
     paddingHorizontal: 30,
     borderRadius: 30,
   },

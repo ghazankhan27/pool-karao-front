@@ -11,7 +11,7 @@ import SignupModal from "../../screens/SignupModal";
 export default function LoginForm() {
   const [email, onChangeEmail] = useState("");
   const [password, onChangePassword] = useState("");
-  const [showSignupModal, setShowSignupModal] = useState(true);
+  const [showSignupModal, setShowSignupModal] = useState(false);
 
   const submitForm = () => {};
 
